@@ -1,0 +1,182 @@
+﻿<UserControl
+    x:Class="Venda.Iterativa.UserControls.ucReceber"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Venda.Iterativa.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:Height="680"
+    d:Width="720"
+    mc:Ignorable="d">
+    <Grid Background="#ECF0F1">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition MinWidth="500" MaxWidth="500" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5,85,0,10"
+            Orientation="Horizontal">
+            <DataGrid
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                GridLinesVisibility="None"
+                HeadersVisibility="None"
+                ItemsSource="{Binding Pedido.Produtos}">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGrid">
+                        <Setter Property="BorderThickness" Value="0" />
+                    </Style>
+
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="BorderBrush" Value="#ECF0F1" />
+                        <Setter Property="Background" Value="#ECF0F1" />
+                        <Setter Property="Foreground" Value="Black" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="#E0E0E0" />
+                                <Setter Property="Background" Value="#E0E0E0" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="115">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse
+                                    Width="80"
+                                    Height="80"
+                                    HorizontalAlignment="Center">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Imagem}" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="600">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock
+                                        Margin="15,30,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        FontWeight="SemiBold"
+                                        Text="{Binding Referencia}" />
+                                    <TextBlock
+                                        Margin="15,5,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="11"
+                                        Foreground="#909090"
+                                        Text="{Binding Descricao}"
+                                        TextWrapping="Wrap" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="115">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="15,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        FontWeight="SemiBold"
+                                        Text="R$" />
+                                    <TextBlock
+                                        Margin="5,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        FontWeight="SemiBold"
+                                        Text="{Binding Preco}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <Grid
+            
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Margin="44,50,-41,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Rectangle
+                Grid.Column="0"
+                Margin="56,-50,39,0"
+                Fill="#4b4643"
+                RadiusX="0"
+                RadiusY="0" />
+            <StackPanel
+                Margin="0,50,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top">
+
+                <TextBlock
+                    Height="34"
+                    Margin="20"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    RenderTransformOrigin="0.49,-1.529"
+                    Text="Cartão de Crédito" Foreground="#FD0"/>
+                <TextBlock FontSize="18" VerticalAlignment="Bottom" Foreground="White" Height="25" ><Run Language="pt-br" Text="Selecione a Bandeira"/><LineBreak/><Run Language="pt-br"/></TextBlock>
+            </StackPanel>
+            <Button
+                Height="100"
+                Margin="56,530,39,0"
+                VerticalAlignment="Bottom"
+                Background="#FD0"
+                BorderThickness="0"
+                Click="Button_Click">
+                <TextBlock
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="Black"
+                    Text="Finalizar" />
+            </Button>
+            <TextBlock FontSize="16" Foreground="White" Text="Número do Cartão" Margin="143,216,148,0" VerticalAlignment="Top" />
+            <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
+                x:Name="NCartao"
+        Margin="143,235,94,0" />
+            <TextBlock FontSize="16" Foreground="White" Text="Data de Validade" Margin="140,319,226,0" VerticalAlignment="Top" />
+            <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
+                x:Name="Data_Validade"
+                Margin="143,350,225,0" />
+            <TextBlock Foreground="White" Text="CVV:" Margin="299,319,114,0" VerticalAlignment="Top"/>
+            <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
+                x:Name="CVV"
+                Margin="299,350,94,0" />
+            
+        </Grid>
+
+    </Grid>
+
+</UserControl>
