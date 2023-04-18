@@ -20,8 +20,16 @@ namespace Venda.Iterativa.Commands
                 }
                 else 
                 {
-                    MessageBox.Show("Foi adicionado:" + vm.Pedido.Produtos.Count + " itens no carrinho?");
-                    vm.Pedido = ucReceber.Exibir(vm.MainUserControl, vm.Pedido);
+                    if(MessageBox.Show("Deseja prosseguir para o pagamento ?","Foi adicionado: " + vm.Pedido.Produtos.Count + " itens no carrinho", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                    {
+
+                    }
+                    else
+                    {
+                        vm.Pedido = ucReceber.Exibir(vm.MainUserControl, vm.Pedido);
+                    }
+                    
+                    
 
                 }
 
