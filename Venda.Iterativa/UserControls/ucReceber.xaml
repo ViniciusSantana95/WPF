@@ -9,6 +9,7 @@
     d:Width="720"
     mc:Ignorable="d">
     <Grid Background="#ECF0F1">
+        
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -117,19 +118,24 @@
             </DataGrid>
         </StackPanel>
 
+        <TextBlock Text="Total: R$" Margin="10,25,425,4" FontSize="16" Grid.Row="2" RenderTransformOrigin="-2.1,0.476" Grid.Column="1"/>
+
+        <TextBlock Text="{Binding Pedido.Total}" FontWeight="SemiBold" 
+                           Margin="75,25,380,4" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+
         <Grid
             
             Grid.Row="1"
             Grid.RowSpan="2"
             Grid.Column="1"
-            Margin="44,50,-41,0">
+            Margin="125,50,-41,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Rectangle
                 Grid.Column="0"
-                Margin="56,-50,39,0"
+                Margin="0,-50,39,0"
                 Fill="#4b4643"
                 RadiusX="0"
                 RadiusY="0" />
@@ -145,11 +151,11 @@
                     FontWeight="Bold"
                     RenderTransformOrigin="0.49,-1.529"
                     Text="Cartão de Crédito" Foreground="#FD0"/>
-                <TextBlock FontSize="18" VerticalAlignment="Bottom" Foreground="White" Height="25" ><Run Language="pt-br" Text="Selecione a Bandeira"/><LineBreak/><Run Language="pt-br"/></TextBlock>
+                <TextBlock FontSize="18" Foreground="White" Height="25" Width="268" ><Run Language="pt-br" Text="Selecione a Bandeira"/><LineBreak/><Run Language="pt-br"/></TextBlock>
             </StackPanel>
             <Button
                 Height="100"
-                Margin="56,530,39,0"
+                Margin="0,0,39,0"
                 VerticalAlignment="Bottom"
                 Background="#FD0"
                 BorderThickness="0"
@@ -161,20 +167,21 @@
                     FontWeight="Bold"
                     Foreground="Black"
                     Text="Finalizar" />
+                
             </Button>
-            <TextBlock FontSize="16" Foreground="White" Text="Número do Cartão" Margin="143,216,148,0" VerticalAlignment="Top" />
+            <TextBlock FontSize="16" Foreground="White" Text="Número do Cartão" Margin="76,220,170,0" VerticalAlignment="Top" />
             <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
                 x:Name="NCartao"
-        Margin="143,235,94,0" />
-            <TextBlock FontSize="16" Foreground="White" Text="Data de Validade" Margin="140,319,226,0" VerticalAlignment="Top" />
-            <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
+        Margin="74,237,94,0" />
+            <TextBlock FontSize="16" Foreground="White" Text="Data de Validade" Margin="75,319,212,0" VerticalAlignment="Top" />
+            <DatePicker VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="Black"
                 x:Name="Data_Validade"
-                Margin="143,350,225,0" />
-            <TextBlock Foreground="White" Text="CVV:" Margin="299,319,114,0" VerticalAlignment="Top"/>
+                Margin="75,350,225,0" />
+            <TextBlock Foreground="White" Text="CVV:" Margin="265,323,130,0" VerticalAlignment="Top"/>
             <TextBox VerticalAlignment="Top" BorderBrush="White" FontSize="16" Foreground="#FD0"
                 x:Name="CVV"
-                Margin="299,350,94,0" />
-            
+                Margin="265,350,94,0" />
+
         </Grid>
 
     </Grid>

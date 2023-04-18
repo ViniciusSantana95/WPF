@@ -5,11 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Venda.Iterativa.Classes;
+using Venda.Iterativa.Commands;
 
 namespace Venda.Iterativa.Model
 {
     internal sealed class PedidoModel : AbstractModel
     {
+        private ReceberPedidoCommand _receber;
+
+        public ReceberPedidoCommand Receber 
+        { 
+            get => _receber;
+            set => SetField(ref _receber, value);
+        }
+
         private ObservableCollection<ProdutoModel> _produtos
             = new ObservableCollection<ProdutoModel>();
         private decimal _total = 0.00m;

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using Venda.Iterativa.Interfaces;
 using Venda.Iterativa.Model;
 using Venda.Iterativa.ViewModel;
@@ -28,23 +30,22 @@ namespace Venda.Iterativa.UserControls
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(NCartao.Text) || string.IsNullOrEmpty(Data_Validade.Text) || string.IsNullOrEmpty(CVV.Text))
+            if(NCartao.Text.Length < 16 || NCartao.Text.Length > 16)
+            {
+                MessageBox.Show("Número do cartão precisa ter 16 digitos");
+            }
+            else if (CVV.Text.Length < 3 || CVV.Text.Length > 3)
+            {
+                MessageBox.Show("CVV deve conter 3 digitos");
+            }else if(string.IsNullOrEmpty(NCartao.Text) || string.IsNullOrEmpty(Data_Validade.Text) || string.IsNullOrEmpty(CVV.Text))
             {
                 MessageBox.Show("Por favor, preencha todos os campos para finalizar a compra.");
             }
             else
             {
                 MessageBox.Show("Compra finalizada com sucesso!");
-
-                //Fechar o UserControl atual
-                UserControl userControlAtual = this.Parent as UserControl;
-                Grid gridPai = userControlAtual.Parent as Grid;
-                gridPai.Children.Remove(userControlAtual);
-
-                //Chamar o UserControl inicial
-                UserControl userControlInicial = new ucListarProdutos();
-                gridPai.Children.Add(userControlInicial);
             }
         }
+
     }
 }

@@ -6,15 +6,11 @@ namespace Venda.Iterativa.UserControls
 {
     public partial class ucListarProdutos : UserControl
     {
+        
         private ucListarProdutos(IObserver observer)
         {
             InitializeComponent();
             DataContext = new ListarProdutosViewModel(this, observer);
-        }
-
-        public ucListarProdutos()
-        {
-            InitializeComponent();
         }
 
         internal static void Exibir(IObserver observer)

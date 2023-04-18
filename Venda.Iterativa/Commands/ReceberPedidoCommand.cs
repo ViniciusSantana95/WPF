@@ -13,13 +13,26 @@ namespace Venda.Iterativa.Commands
             try
             {
                 var vm = parameter as ListarProdutosViewModel;
-                vm.Pedido = ucReceber
-                    .Exibir(vm.MainUserControl, vm.Pedido);
+
+                if(vm.Pedido.Produtos.Count == 0)
+                {
+                    MessageBox.Show("Não foi adicionado nenhum produto");  
+                }
+                else 
+                {
+                    MessageBox.Show("Foi adicionado:" + vm.Pedido.Produtos.Count + " itens no carrinho?");
+                    vm.Pedido = ucReceber.Exibir(vm.MainUserControl, vm.Pedido);
+
+                }
+
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+
         }
     }
 }
